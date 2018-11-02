@@ -1,7 +1,11 @@
-body {
-    
+img {
+  height: 100px;
 }
 
 h1 {
     color: blue;
+}
+
+#mapid {
+    height: 600px;
 }
