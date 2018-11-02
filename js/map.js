@@ -2,7 +2,7 @@ var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
 var geojsonLayer = new L.GeoJSON.AJAX("geojson/LondonWardsSPI.geojson");
 
-var londonBoroughs = new L.GeoJSON.AJAX("geojson/LondonBoroughs.geojson");       
+var londonBoroughs = new L.GeoJSON.AJAX("geojson/LondonBoroughs.geojson");
 
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -12,5 +12,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={ac
     accessToken: 'your.mapbox.access.token'
 }).addTo(mymap);
 
-geojsonLayer.addTo(mymap);
-londonBoroughs.addTo(mymap);
+L.geoJSON(geojsonLayer).addTo(map);
+
+//geojsonLayer.addTo(mymap);
+//londonBoroughs.addTo(mymap);
