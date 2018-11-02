@@ -12,7 +12,5 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={ac
     accessToken: 'your.mapbox.access.token'
 }).addTo(mymap);
 
-L.geoJSON(geojsonLayer).addTo(map);
-
 geojsonLayer.addTo(mymap);
 londonBoroughs.addTo(mymap);
