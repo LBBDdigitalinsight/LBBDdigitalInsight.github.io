@@ -6,11 +6,29 @@ h1 {
     color: blue;
 }
 
-#mapid {
-    height: 850px;
+
+#menu {
+  width: 30%;
+  min-width: 100px;
+  display: inline;
+  text-align: left;
+  word-wrap: normal;
 }
 
-p, h3 {
+
+#mapid {
+    height: 850px;
+    width: 70%;
+    display: inline;
+}
+
+#block_container {
+    display: flex;
+}
+
+
+
+h3 {
   line-height: 0.1;
 }
 

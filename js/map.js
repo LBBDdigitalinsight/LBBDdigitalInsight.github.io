@@ -19,6 +19,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={ac
 //    return layer.feature.properties.WD11NM;}
 //  ).addTo(mymap);
 
+L.geoJSON(London, {
+  style: function(feature){
+    return {
+      color: "black",
+      fillOpacity: 0,
+      weight: 2
+    }
+  }
+}).addTo(mymap);
+
 L.geoJSON(wards, {
   style: function(feature) {
       var value = feature.properties.hw2018;
