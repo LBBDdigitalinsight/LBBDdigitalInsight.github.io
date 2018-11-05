@@ -21,12 +21,11 @@ var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
 '</select>'
 
 
-
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     maxZoom: 18,
     id: 'openstreetmap',
-    accessToken: 'your.mapbox.access.token'
+    accessToken: 'this variable is required but not used!'
 }).addTo(mymap);
 
 L.geoJSON(London, {
