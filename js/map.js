@@ -1,8 +1,24 @@
 var mymap = L.map('mapid').setView([51.505, -0.09], 11);
 
-//var geojsonLayer = new L.GeoJSON.AJAX("geojson/LondonWardsSPI.geojson");
+document.querySelector('#component').value = 'hwb';
+document.querySelector('#variable').value = 'hwb';
 
-//var londonBoroughs = new L.GeoJSON.AJAX("geojson/LondonBoroughs.geojson");
+var var_drop_hwb = '<select class="map_item" name="variable" id="variable">' +
+  '<option value="mle">Male Life Expectancy</option>' +
+  '<option value="fle">Female Life Expectancy</option>' +
+  '<option value="y6ob">Obesity in Year 6</option>' +
+  '<option value="rob">Obesity in Year 6</option>' +
+  '<option value="hwb">Health & Wellbeing Score</option>' +
+'</select>'
+
+var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
+  '<option value="crm">Crime</option>' +
+  '<option value="da">Domestic Abuse</option>' +
+  '<option value="ksi">Killed or Seriously Injured</option>' +
+  '<option value="syv">Serious Youth Violence</option>' +
+  '<option value="pers">Personal Safety Score</option>' +
+'</select>'
+
 
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -22,97 +38,69 @@ L.geoJSON(London, {
   }
 }).addTo(mymap);
 
-var health_wellbeing = L.geoJSON(wards, {
-  style: function(feature) { var value = feature.properties.hw2018;
-    if        (value >= 90) { return {fillColor: "#006837", color: "black", weight: 0.5};
-    } else if (value >= 80) { return {fillColor: "#1a9850", color: "black", weight: 0.5};
-    } else if (value >= 70) { return {fillColor: "#66bd63", color: "black", weight: 0.5};
-    } else if (value >= 60) { return {fillColor: "#a6d96a", color: "black", weight: 0.5};
-    } else if (value >= 50) { return {fillColor: "#d9ef8b", color: "black", weight: 0.5};
-    } else if (value >= 40) { return {fillColor: "#fee08b", color: "black", weight: 0.5};
-    } else if (value >= 30) { return {fillColor: "#fdae61", color: "black", weight: 0.5};
-    } else if (value >= 20) { return {fillColor: "#f46d43", color: "black", weight: 0.5};
-    } else if (value >= 10) { return {fillColor: "#d73027", color: "black", weight: 0.5};
-    } else {                  return {fillColor: "#a50026", color: "black", weight: 0.5
-      }
-    }
-  }
-}).bindPopup(function(layer) {
-        var name = layer.feature.properties.WD11NM;
-        var hw2018 = layer.feature.properties.hw2018;
-        var fle2018 = layer.feature.properties.FLE2018;
-        var mle2018 = layer.feature.properties.MLE2018;
-        var rcp2018 = layer.feature.properties.Rcp2018;
-        var yr62018 = layer.feature.properties.Yr62018;
 
-        return '<h3>Ward: ' + name + '</h3>' +
-                '<table>' +
-                  '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                  '<tr> <td><strong>Male Life Expectancy:</strong></td>         <td>' + mle2018 + '</td> </tr>'+
-                  '<tr> <td><strong>Female Life Expectancy: </strong></td>      <td>' + fle2018 + '</td> </tr>' +
-                  '<tr> <td><strong>Obesity in Year 6: </strong></td>           <td>' + yr62018 + '</td> </tr>' +
-                  '<tr> <td><strong>Obesity in Reception: </strong></td>        <td>' + rcp2018 + '</td> </tr>' +
-                  '<tr> <td><strong>Health and Wellbeing Score: </strong></td>  <td>' + hw2018 + ' </td> </tr>' +
-                '</table>';
-  })
-
-  var personal_safety = L.geoJSON(wards, {
-    style: function(feature) { var value = feature.properties.ps2018;
-        if        (value >= 90) { return {fillColor: "#006837", color: "black", weight: 0.5};
-        } else if (value >= 80) { return {fillColor: "#1a9850", color: "black", weight: 0.5};
-        } else if (value >= 70) { return {fillColor: "#66bd63", color: "black", weight: 0.5};
-        } else if (value >= 60) { return {fillColor: "#a6d96a", color: "black", weight: 0.5};
-        } else if (value >= 50) { return {fillColor: "#d9ef8b", color: "black", weight: 0.5};
-        } else if (value >= 40) { return {fillColor: "#fee08b", color: "black", weight: 0.5};
-        } else if (value >= 30) { return {fillColor: "#fdae61", color: "black", weight: 0.5};
-        } else if (value >= 20) { return {fillColor: "#f46d43", color: "black", weight: 0.5};
-        } else if (value >= 10) { return {fillColor: "#d73027", color: "black", weight: 0.5};
-        } else {                  return {fillColor: "#a50026", color: "black", weight: 0.5
-          }
-        }
-      }
-    }).bindPopup(function(layer) {
-          var name = layer.feature.properties.WD11NM;
-          var ps2018 = layer.feature.properties.ps2018;
-          var syv2018 = layer.feature.properties.SYV2018;
-          var ksi2018 = layer.feature.properties.KSI2018;
-          var da2018 = layer.feature.properties.DA2018;
-          var crime2018 = layer.feature.properties.Crime2018;
-
-          return '<h3>Ward: ' + name + '</h3>' +
-                  '<table>' +
-                    '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                    '<tr> <td><strong>Crime: </strong></td>                         <td>' + crime2018 + '</td> </tr>'+
-                    '<tr> <td><strong>Domestic Abuse: </strong></td>                <td>' + da2018 + '</td> </tr>' +
-                    '<tr> <td><strong>Killed or Seriously Injured: </strong></td>   <td>' + ksi2018 + '</td> </tr>' +
-                    '<tr> <td><strong>Serious Youth Violence: </strong></td>        <td>' + syv2018 + '</td> </tr>' +
-                    '<tr> <td><strong>Personal Safety Score: </strong></td>  <td>' + ps2018 + ' </td> </tr>' +
-                  '</table>';
-    })
-
-  health_wellbeing.addTo(mymap);
+var map_layer = draw_map(document.getElementById("component").value, document.getElementById("var_select").value);
+map_layer.addTo(mymap);
 
 
-
-  document.getElementById("map_button").addEventListener("click", function(){
+document.getElementById("map_button").addEventListener("click", function(){
       var name = document.getElementById("component").value;
       //console.log(name);
+      //console.log(document.getElementById("variable").value);
 
       if (name == 'hwb') {
-        document.getElementById("maptitle").innerHTML = 'Health and Wellbeing Component Score';
-        mymap.removeLayer(health_wellbeing);
-        mymap.removeLayer(personal_safety);
-        health_wellbeing.addTo(mymap);
+        var display_name = 'Health and Wellbeing, ';
+        mymap.removeLayer(map_layer);
+        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value);
+        map_layer.addTo(mymap);
 
+        if (document.getElementById("variable").value == 'mle') {
+          display_name += 'Male Life Expectancy';
+        } else if (document.getElementById("variable").value == 'fle') {
+          display_name += 'Female Life Expectancy';
+        } else if (document.getElementById("variable").value == 'yrob') {
+          display_name += 'Obesity in Year 6';
+        } else if (document.getElementById("variable").value == 'rob') {
+          display_name += 'Obesity in Reception';
+        } else {
+          display_name += 'Component Score';
+        }
+        
       } else {
-        document.getElementById("maptitle").innerHTML = 'Personal Safety Component Score';
-        mymap.removeLayer(health_wellbeing);
-        mymap.removeLayer(personal_safety);
-        personal_safety.addTo(mymap);
 
+        var display_name = document.getElementById("maptitle").innerHTML = 'Personal Safety, ';
+        mymap.removeLayer(map_layer);
+        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value);
+        map_layer.addTo(mymap);
+
+        if (document.getElementById("variable").value == 'crm') {
+          display_name += 'Crime';
+        } else if (document.getElementById("variable").value == 'da') {
+          display_name += 'Domestic Abuse';
+        } else if (document.getElementById("variable").value == 'ksi') {
+          display_name += 'Killed or Seriously Injured';
+        } else if (document.getElementById("variable").value == 'syv') {
+          display_name += 'Serious Youth Violence';
+        } else {
+          display_name += 'Component Score';
+        }
       }
 
-
-
-
+      document.getElementById("maptitle").innerHTML = display_name;
   });
+
+
+
+document.addEventListener('DOMContentLoaded',function() {
+    document.querySelector('select[name="comp"]').onchange=changeEventHandler;
+},false);
+
+function changeEventHandler(event) {
+if (this.value == 'hwb') {
+    document.getElementById('var_select').innerHTML = var_drop_hwb;
+    //console.log(this.value);
+} else {
+    document.getElementById('var_select').innerHTML = var_drop_perc;
+    //console.log(this.value);
+  }
+}
