@@ -38,8 +38,7 @@ L.geoJSON(London, {
   }
 }).addTo(mymap);
 
-
-var map_layer = draw_map(document.getElementById("component").value, document.getElementById("var_select").value);
+var map_layer = draw_map('hwb', 'hwb');
 map_layer.addTo(mymap);
 
 
@@ -65,7 +64,7 @@ document.getElementById("map_button").addEventListener("click", function(){
         } else {
           display_name += 'Component Score';
         }
-        
+
       } else {
 
         var display_name = document.getElementById("maptitle").innerHTML = 'Personal Safety, ';
