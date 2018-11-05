@@ -61,7 +61,7 @@ document.getElementById("map_button").addEventListener("click", function(){
           display_name += 'Male Life Expectancy';
         } else if (document.getElementById("variable").value == 'fle') {
           display_name += 'Female Life Expectancy';
-        } else if (document.getElementById("variable").value == 'yrob') {
+        } else if (document.getElementById("variable").value == 'y6ob') {
           display_name += 'Obesity in Year 6';
         } else if (document.getElementById("variable").value == 'rob') {
           display_name += 'Obesity in Reception';
