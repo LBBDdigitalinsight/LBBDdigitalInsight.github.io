@@ -8,7 +8,7 @@ var var_drop_hwb = '<select class="map_item" name="variable" id="variable">' +
   '<option value="fle">Female Life Expectancy</option>' +
   '<option value="y6ob">Obesity in Year 6</option>' +
   '<option value="rob">Obesity in Year 6</option>' +
-  '<option value="hwb">Health & Wellbeing Score</option>' +
+  '<option value="hwb" selected>Health & Wellbeing Score</option>' +
 '</select>'
 
 var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
@@ -16,7 +16,7 @@ var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
   '<option value="da">Domestic Abuse</option>' +
   '<option value="ksi">Killed or Seriously Injured</option>' +
   '<option value="syv">Serious Youth Violence</option>' +
-  '<option value="pers">Personal Safety Score</option>' +
+  '<option value="pers" selected>Personal Safety Score</option>' +
 '</select>'
 
 
