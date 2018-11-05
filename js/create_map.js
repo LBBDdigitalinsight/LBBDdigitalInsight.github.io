@@ -1,4 +1,4 @@
-function draw_map(comp, vr){
+function draw_map(comp, vr, op){
 
   var map_layer = L.geoJSON(wards, {
     style: function(feature) {
@@ -24,16 +24,16 @@ function draw_map(comp, vr){
         var value = feature.properties.ps2018;
       }
 
-      if        (value >= 90) { return {fillColor: "#006837", color: "black", weight: 0.5};
-      } else if (value >= 80) { return {fillColor: "#1a9850", color: "black", weight: 0.5};
-      } else if (value >= 70) { return {fillColor: "#66bd63", color: "black", weight: 0.5};
-      } else if (value >= 60) { return {fillColor: "#a6d96a", color: "black", weight: 0.5};
-      } else if (value >= 50) { return {fillColor: "#d9ef8b", color: "black", weight: 0.5};
-      } else if (value >= 40) { return {fillColor: "#fee08b", color: "black", weight: 0.5};
-      } else if (value >= 30) { return {fillColor: "#fdae61", color: "black", weight: 0.5};
-      } else if (value >= 20) { return {fillColor: "#f46d43", color: "black", weight: 0.5};
-      } else if (value >= 10) { return {fillColor: "#d73027", color: "black", weight: 0.5};
-      } else {                  return {fillColor: "#a50026", color: "black", weight: 0.5
+      if        (value >= 90) { return {fillColor: "#006837", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 80) { return {fillColor: "#1a9850", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 70) { return {fillColor: "#66bd63", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 60) { return {fillColor: "#a6d96a", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 50) { return {fillColor: "#d9ef8b", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 40) { return {fillColor: "#fee08b", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 30) { return {fillColor: "#fdae61", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 20) { return {fillColor: "#f46d43", color: "black", weight: 0.5, fillOpacity: op};
+      } else if (value >= 10) { return {fillColor: "#d73027", color: "black", weight: 0.5, fillOpacity: op};
+      } else {                  return {fillColor: "#a50026", color: "black", weight: 0.5, fillOpacity: op
         }
       }
     }

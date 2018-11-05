@@ -1,4 +1,5 @@
 var mymap = L.map('mapid').setView([51.505, -0.09], 11);
+var op = parseFloat(document.getElementById("myRange").value);
 
 document.querySelector('#component').value = 'hwb';
 document.querySelector('#variable').value = 'hwb';
@@ -38,7 +39,7 @@ L.geoJSON(London, {
   }
 }).addTo(mymap);
 
-var map_layer = draw_map('hwb', 'hwb');
+var map_layer = draw_map('hwb', 'hwb', 0.9);
 map_layer.addTo(mymap);
 
 
@@ -47,10 +48,12 @@ document.getElementById("map_button").addEventListener("click", function(){
       //console.log(name);
       //console.log(document.getElementById("variable").value);
 
+      op = parseFloat(document.getElementById("myRange").value) / 100;
+
       if (name == 'hwb') {
         var display_name = 'Health and Wellbeing, ';
         mymap.removeLayer(map_layer);
-        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value);
+        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value, op);
         map_layer.addTo(mymap);
 
         if (document.getElementById("variable").value == 'mle') {
@@ -69,7 +72,7 @@ document.getElementById("map_button").addEventListener("click", function(){
 
         var display_name = document.getElementById("maptitle").innerHTML = 'Personal Safety, ';
         mymap.removeLayer(map_layer);
-        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value);
+        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value, op);
         map_layer.addTo(mymap);
 
         if (document.getElementById("variable").value == 'crm') {
