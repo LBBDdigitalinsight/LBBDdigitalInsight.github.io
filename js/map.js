@@ -8,7 +8,7 @@ var var_drop_hwb = '<select class="map_item" name="variable" id="variable">' +
   '<option value="mle">Male Life Expectancy</option>' +
   '<option value="fle">Female Life Expectancy</option>' +
   '<option value="y6ob">Obesity in Year 6</option>' +
-  '<option value="rob">Obesity in Year 6</option>' +
+  '<option value="rob">Obesity in Reception</option>' +
   '<option value="hwb" selected>Health & Wellbeing Score</option>' +
 '</select>'
 
