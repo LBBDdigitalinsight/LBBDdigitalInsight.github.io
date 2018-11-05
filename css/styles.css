@@ -23,7 +23,7 @@ h1 {
 }
 
 #menu {
-  width: 20%;
+  width: 16%;
   min-width: 100px;
   display: inline;
   text-align: left;
@@ -159,4 +159,18 @@ tr:nth-child(even) {
 
 .button:hover {
     background-color: green;
+}
+
+#menu {
+  margin: 2%;
+}
+
+#menu p{
+  font-size: 14pt;
+  text-align: center;
+}
+
+#menu ol {
+  font-size: 14pt;
+  text-align: left;
 }
