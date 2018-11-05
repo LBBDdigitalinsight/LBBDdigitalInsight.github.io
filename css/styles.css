@@ -23,8 +23,16 @@ h1 {
 }
 
 #menu {
-  width: 30%;
+  width: 20%;
   min-width: 100px;
+  display: inline;
+  text-align: left;
+  word-wrap: normal;
+}
+
+#menu_map {
+  width: 20%;
+  min-width: 50px;
   display: inline;
   text-align: left;
   word-wrap: normal;
@@ -33,7 +41,7 @@ h1 {
 
 #mapid {
     height: 850px;
-    width: 70%;
+    width: 60%;
     display: inline;
 }
 
@@ -130,4 +138,25 @@ tr:nth-child(even) {
   /*padding: 5px;*/
   margin-right: 50px;
   text-align: center;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin:auto;
+    display:block;
+}
+
+.map_item {
+  margin:auto;
+  display:block;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.button:hover {
+    background-color: green;
 }
