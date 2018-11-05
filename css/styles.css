@@ -2,10 +2,25 @@ img {
   height: 100px;
 }
 
-h1 {
-    color: blue;
+.main_content {
+  margin: 0% 10%;
 }
 
+.main_content p {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 14pt;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+.menu {
+  height: 100px;
+  padding: 0.1% 10%;
+}
 
 #menu {
   width: 30%;
@@ -26,8 +41,6 @@ h1 {
     display: flex;
 }
 
-
-
 h3 {
   line-height: 0.1;
 }
@@ -45,4 +58,76 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.ArticleCopy{
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  width: 80%;
+  margin:0 auto;
+  border: 1px solid #ddd;
+  padding: 3rem;
+}
+.ArticleCopy p {
+    text-rendering: optimizeLegibility;
+}
+.ArticleCopy blockquote {
+    border-radius: 3px;
+    position: relative;  /*  <--- */
+    font-style: italic;
+    text-align: center;
+    padding: 1rem 1.2rem;
+    width: 80%;  /* create space for the quotes */
+    color: #4a4a4a;
+    margin: 1rem auto 2rem;
+    color: #4a4a4a;
+    background: #E8E8E8;
+}
+/* -- create the quotation marks -- */
+.ArticleCopy blockquote:before,
+.ArticleCopy blockquote:after{
+    font-family: FontAwesome;
+    position: absolute;
+    /* -- inside the relative position of blockquote -- */
+    top: 13px;
+    color: #E8E8E8;
+    font-size: 34px;
+}
+
+.ArticleCopy blockquote:before{
+    content: "\f10d";
+    margin-right: 13px;
+    right: 100%;
+}
+
+.ArticleCopy blockquote:after{
+    content: "\f10e";
+    margin-left: 13px;
+    left: 100%;
+}
+
+.author {
+  text-align: right;
+  font-weight: bold;
+}
+
+.menu_item {
+  float: left;
+  width: 10%;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+  margin-right: 50px;
+  background: 	#90EE90;
+  text-align: center;
+  line-height: 25px;
+}
+
+.menu_item_logo {
+  float: left;
+  width: 10%;
+  width: 200px;
+  height: 100px;
+  /*padding: 5px;*/
+  margin-right: 50px;
+  text-align: center;
 }
