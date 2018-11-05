@@ -1,6 +1,8 @@
 var mymap = L.map('mapid').setView([51.505, -0.09], 11);
 var op = parseFloat(document.getElementById("myRange").value);
 
+var slider = '<p>Set Map Opacity:</p><input type="range" min=0 max=100 value=90 class="slider" id="myRange">'
+
 document.querySelector('#component').value = 'hwb';
 document.querySelector('#variable').value = 'hwb';
 
@@ -10,7 +12,7 @@ var var_drop_hwb = '<select class="map_item" name="variable" id="variable">' +
   '<option value="y6ob">Obesity in Year 6</option>' +
   '<option value="rob">Obesity in Reception</option>' +
   '<option value="hwb" selected>Health & Wellbeing Score</option>' +
-'</select>'
+'</select>' + slider;
 
 var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
   '<option value="crm">Crime</option>' +
@@ -18,7 +20,7 @@ var var_drop_perc = '<select class="map_item" name="variable" id="variable">' +
   '<option value="ksi">Killed or Seriously Injured</option>' +
   '<option value="syv">Serious Youth Violence</option>' +
   '<option value="pers" selected>Personal Safety Score</option>' +
-'</select>'
+'</select>' + slider;
 
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {
