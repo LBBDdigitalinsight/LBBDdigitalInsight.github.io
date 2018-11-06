@@ -2,6 +2,15 @@ img {
   height: 100px;
 }
 
+a {
+  color: blue;
+  font-size: 14pt;
+}
+
+a:visited {
+  color: blue;
+}
+
 .main_content {
   margin: 0% 10%;
 }
