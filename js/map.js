@@ -6,6 +6,19 @@ var slider = '<p>Set Map Opacity:</p><input type="range" min=0 max=100 value=90 
 document.querySelector('#component').value = 'hwb';
 document.querySelector('#variable').value = 'hwb';
 
+function getColor(d) {
+    return d > 90  ? '#006837' :
+           d > 80  ? '#1a9850' :
+           d > 70  ? '#66bd63' :
+           d > 60  ? '#a6d96a' :
+           d > 50  ? '#d9ef8b' :
+           d > 40  ? '#fee08b' :
+           d > 30  ? '#fdae61' :
+           d > 20  ? '#f46d43' :
+           d > 10  ? '#d73027' :
+                     '#a50026';
+}
+
 var var_drop_hwb = '<select class="map_item" name="variable" id="variable">' +
   '<option value="mle">Male Life Expectancy</option>' +
   '<option value="fle">Female Life Expectancy</option>' +
@@ -42,6 +55,26 @@ L.geoJSON(London, {
 
 var map_layer = draw_map('hwb', 'hwb', 0.9);
 map_layer.addTo(mymap);
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i]) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(mymap);
 
 
 document.getElementById("map_button").addEventListener("click", function(){
