@@ -220,3 +220,21 @@ tr:nth-child(even) {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.tweets {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.twitter-tweet {
+    float: left;
+    width: 50%;
+    padding: 1% 5%;
+}
+
+.tweets:after {
+    content: "";
+    display: table;
+    clear: both;
+}
