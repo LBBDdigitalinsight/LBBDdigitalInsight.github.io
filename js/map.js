@@ -3,6 +3,7 @@ var op = parseFloat(document.getElementById("myRange").value);
 
 var slider = '<p>Set Map Opacity:</p><input type="range" min=0 max=100 value=90 class="slider" id="myRange">'
 
+document.querySelector('#level').value = 'ward';
 document.querySelector('#component').value = 'hwb';
 document.querySelector('#variable').value = 'hwb';
 
@@ -53,7 +54,7 @@ L.geoJSON(London, {
   }
 }).addTo(mymap);
 
-var map_layer = draw_map('hwb', 'hwb', 0.9);
+var map_layer = draw_map('ward', 'hwb', 'hwb', 0.9);
 map_layer.addTo(mymap);
 
 var legend = L.control({position: 'bottomright'});
@@ -78,65 +79,68 @@ legend.addTo(mymap);
 
 
 document.getElementById("map_button").addEventListener("click", function(){
+      var level = document.getElementById("level").value;
       var name = document.getElementById("component").value;
-      //console.log(name);
-      //console.log(document.getElementById("variable").value);
 
       op = parseFloat(document.getElementById("myRange").value) / 100;
 
-      if (name == 'hwb') {
-        var display_name = 'Health and Wellbeing, ';
         mymap.removeLayer(map_layer);
-        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value, op);
-        map_layer.addTo(mymap);
-
-        if (document.getElementById("variable").value == 'mle') {
-          display_name += 'Male Life Expectancy';
-        } else if (document.getElementById("variable").value == 'fle') {
-          display_name += 'Female Life Expectancy';
-        } else if (document.getElementById("variable").value == 'y6ob') {
-          display_name += 'Obesity in Year 6';
-        } else if (document.getElementById("variable").value == 'rob') {
-          display_name += 'Obesity in Reception';
-        } else {
-          display_name += 'Component Score';
-        }
-
+        if (level == 'ward') {
+          console.log('ward');
+        map_layer = draw_map(level, document.getElementById("component").value, document.getElementById("variable").value, op);
       } else {
-
-        var display_name = document.getElementById("maptitle").innerHTML = 'Personal Safety, ';
-        mymap.removeLayer(map_layer);
-        map_layer = draw_map(document.getElementById("component").value, document.getElementById("variable").value, op);
-        map_layer.addTo(mymap);
-
-        if (document.getElementById("variable").value == 'crm') {
-          display_name += 'Crime';
-        } else if (document.getElementById("variable").value == 'da') {
-          display_name += 'Domestic Abuse';
-        } else if (document.getElementById("variable").value == 'ksi') {
-          display_name += 'Killed or Seriously Injured';
-        } else if (document.getElementById("variable").value == 'syv') {
-          display_name += 'Serious Youth Violence';
-        } else {
-          display_name += 'Component Score';
-        }
+        console.log('not ward');
+        map_layer = draw_map_borough(level, document.getElementById("component").value, op);
       }
 
-      document.getElementById("maptitle").innerHTML = display_name;
+
+        map_layer.addTo(mymap);
+
+
   });
 
 
+document.addEventListener('DOMContentLoaded',function() {
+    document.querySelector('select[name="level"]').onchange=changeEventHandlerLevel;
+  },false);
 
 document.addEventListener('DOMContentLoaded',function() {
     document.querySelector('select[name="comp"]').onchange=changeEventHandler;
 },false);
 
 function changeEventHandler(event) {
+if (document.querySelector('#level').value == 'ward') {
 if (this.value == 'hwb') {
     document.getElementById('var_select').innerHTML = var_drop_hwb;
     //console.log(this.value);
 } else {
     document.getElementById('var_select').innerHTML = var_drop_perc;
+    //console.log(this.value);
+  }
+}
+}
+
+function changeEventHandlerLevel(event) {
+if (this.value == 'ward') {
+  document.addEventListener('DOMContentLoaded',function() {
+      document.querySelector('select[name="comp"]').onchange=changeEventHandler;
+  },false);
+
+  if (document.querySelector('#component').value == 'hwb') {
+      document.getElementById('var_select').innerHTML = var_drop_hwb;
+      //console.log(this.value);
+  } else {
+      document.getElementById('var_select').innerHTML = var_drop_perc;
+      //console.log(this.value);
+    }
+    //console.log(this.value);
+} else if (this.value == 'borough') {
+    //document.getElementById('var_select').style.visibility = "hidden";
+    document.getElementById('var_select').innerHTML = slider;
+    //console.log(this.value);
+} else {
+    //document.getElementById('var_select').style.visibility = "hidden";
+    document.getElementById('var_select').innerHTML = slider;
     //console.log(this.value);
   }
 }

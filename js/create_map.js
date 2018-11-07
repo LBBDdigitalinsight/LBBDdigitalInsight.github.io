@@ -1,5 +1,5 @@
-function draw_map(comp, vr, op){
-
+function draw_map(level, comp, vr, op){
+  if (level == 'ward') {
   var map_layer = L.geoJSON(wards, {
     style: function(feature) {
       if (vr == 'hwb') {
@@ -23,19 +23,7 @@ function draw_map(comp, vr, op){
       } else {
         var value = feature.properties.ps2018;
       }
-
-      if        (value >= 90) { return {fillColor: "#006837", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 80) { return {fillColor: "#1a9850", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 70) { return {fillColor: "#66bd63", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 60) { return {fillColor: "#a6d96a", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 50) { return {fillColor: "#d9ef8b", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 40) { return {fillColor: "#fee08b", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 30) { return {fillColor: "#fdae61", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 20) { return {fillColor: "#f46d43", color: "black", weight: 0.5, fillOpacity: op};
-      } else if (value >= 10) { return {fillColor: "#d73027", color: "black", weight: 0.5, fillOpacity: op};
-      } else {                  return {fillColor: "#a50026", color: "black", weight: 0.5, fillOpacity: op
-        }
-      }
+      return {fillColor: getColor(value), color: "black", weight: 0.5, fillOpacity: op};
     }
   }).bindPopup(function(layer) {
       if (comp == 'hwb') {
@@ -74,6 +62,84 @@ function draw_map(comp, vr, op){
                   '</table>';
         }
     })
+  }
+
 
     return(map_layer);
   }
+
+
+
+
+
+  function draw_map_borough(level, comp, op){
+    if (level == 'borough') {
+      var shape = london_boroughs_SPI;
+    } else {
+      var shape = London_STP_SPI;
+    }
+
+    var map_layer = L.geoJSON(shape, {
+      style: function(feature) {
+      if (level == 'borough') {
+        if (comp == 'hwb') {
+          var value = feature.properties.HealthW;
+        } else {
+          var value = feature.properties.PersSafe;
+        }
+      } else {
+        if (comp == 'hwb') {
+          var value = feature.properties.HealthWell;
+        } else {
+          var value = feature.properties.persSafe;
+        }
+      }
+        return {fillColor: getColor(value), color: "black", weight: 0.5, fillOpacity: op};
+      }
+    }).bindPopup(function(layer) {
+      if (level == 'borough') {
+        if (comp == 'hwb') {
+            var name = layer.feature.properties.NAME;
+            var hw2018 = layer.feature.properties.HealthW;
+
+            return '<h3>Ward: ' + name + '</h3>' +
+                    '<table>' +
+                      '<tr> <th>Indicator</th><th>Score</th></tr>' +
+                      '<tr> <td><strong>Health and Wellbeing Score:</strong></td>         <td>' + hw2018 + '</td> </tr>'+
+                    '</table>';
+          } else {
+            var name = layer.feature.properties.NAME;
+            var ps2018 = layer.feature.properties.PersSafe;
+
+            return '<h3>Ward: ' + name + '</h3>' +
+                    '<table>' +
+                      '<tr> <th>Indicator</th><th>Score</th></tr>' +
+                      '<tr> <td><strong>Personal Safety: </strong></td>                         <td>' + ps2018 + '</td> </tr>'+
+                    '</table>';
+          }
+        } else {
+          if (comp == 'hwb') {
+              var name = layer.feature.properties.HealthSTP;
+              var hw2018 = layer.feature.properties.HealthWell;
+
+              return '<h3>Ward: ' + name + '</h3>' +
+                      '<table>' +
+                        '<tr> <th>Indicator</th><th>Score</th></tr>' +
+                        '<tr> <td><strong>Health and Wellbeing Score:</strong></td>         <td>' + hw2018 + '</td> </tr>'+
+                      '</table>';
+            } else {
+              var name = layer.feature.properties.HealthSTP;
+              var ps2018 = layer.feature.properties.persSafe;
+
+              return '<h3>Ward: ' + name + '</h3>' +
+                      '<table>' +
+                        '<tr> <th>Indicator</th><th>Score</th></tr>' +
+                        '<tr> <td><strong>Personal Safety: </strong></td>                         <td>' + ps2018 + '</td> </tr>'+
+                      '</table>';
+            }
+          }
+      })
+
+
+      return(map_layer);
+    }
