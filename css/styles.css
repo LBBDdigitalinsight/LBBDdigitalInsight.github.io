@@ -54,9 +54,13 @@ h1 {
   min-width: 50px;
   display: inline;
   text-align: center;
-  word-wrap: normal;
 }
 
+.heading3 {
+  font-family: arial, sans-serif;
+  font-size: 12pt;
+  font-weight: bold;
+}
 
 #mapid {
     height: 850px;
@@ -146,7 +150,9 @@ tr:nth-child(even) {
   background: 	#90EE90;
   text-align: center;
   line-height: 25px;
+
 }
+
 
 .menu_item_logo {
   float: left;
