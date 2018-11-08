@@ -1,6 +1,14 @@
 function draw_map(level, comp, vr, op){
+
   if (level == 'ward') {
-  var map_layer = L.geoJSON(wards, {
+    var map_l = wards;
+  } else if(level == 'borough') {
+    var map_l = london_boroughs_SPI;
+  } else {
+    var map_l = London_STP_SPI;
+  }
+
+  var map_layer = L.geoJSON(map_l, {
     style: function(feature) {
       if (vr == 'hwb') {
         var value = feature.properties.hw2018;
@@ -62,84 +70,7 @@ function draw_map(level, comp, vr, op){
                   '</table>';
         }
     })
-  }
 
 
     return(map_layer);
   }
-
-
-
-
-
-  function draw_map_borough(level, comp, op){
-    if (level == 'borough') {
-      var shape = london_boroughs_SPI;
-    } else {
-      var shape = London_STP_SPI;
-    }
-
-    var map_layer = L.geoJSON(shape, {
-      style: function(feature) {
-      if (level == 'borough') {
-        if (comp == 'hwb') {
-          var value = feature.properties.HealthW;
-        } else {
-          var value = feature.properties.PersSafe;
-        }
-      } else {
-        if (comp == 'hwb') {
-          var value = feature.properties.HealthWell;
-        } else {
-          var value = feature.properties.persSafe;
-        }
-      }
-        return {fillColor: getColor(value), color: "black", weight: 0.5, fillOpacity: op};
-      }
-    }).bindPopup(function(layer) {
-      if (level == 'borough') {
-        if (comp == 'hwb') {
-            var name = layer.feature.properties.NAME;
-            var hw2018 = layer.feature.properties.HealthW;
-
-            return '<h3>Ward: ' + name + '</h3>' +
-                    '<table>' +
-                      '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                      '<tr> <td><strong>Health and Wellbeing Score:</strong></td>         <td>' + hw2018 + '</td> </tr>'+
-                    '</table>';
-          } else {
-            var name = layer.feature.properties.NAME;
-            var ps2018 = layer.feature.properties.PersSafe;
-
-            return '<h3>Ward: ' + name + '</h3>' +
-                    '<table>' +
-                      '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                      '<tr> <td><strong>Personal Safety: </strong></td>                         <td>' + ps2018 + '</td> </tr>'+
-                    '</table>';
-          }
-        } else {
-          if (comp == 'hwb') {
-              var name = layer.feature.properties.HealthSTP;
-              var hw2018 = layer.feature.properties.HealthWell;
-
-              return '<h3>Ward: ' + name + '</h3>' +
-                      '<table>' +
-                        '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                        '<tr> <td><strong>Health and Wellbeing Score:</strong></td>         <td>' + hw2018 + '</td> </tr>'+
-                      '</table>';
-            } else {
-              var name = layer.feature.properties.HealthSTP;
-              var ps2018 = layer.feature.properties.persSafe;
-
-              return '<h3>Ward: ' + name + '</h3>' +
-                      '<table>' +
-                        '<tr> <th>Indicator</th><th>Score</th></tr>' +
-                        '<tr> <td><strong>Personal Safety: </strong></td>                         <td>' + ps2018 + '</td> </tr>'+
-                      '</table>';
-            }
-          }
-      })
-
-
-      return(map_layer);
-    }

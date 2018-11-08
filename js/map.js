@@ -85,62 +85,20 @@ document.getElementById("map_button").addEventListener("click", function(){
       op = parseFloat(document.getElementById("myRange").value) / 100;
 
         mymap.removeLayer(map_layer);
-        if (level == 'ward') {
-          console.log('ward');
         map_layer = draw_map(level, document.getElementById("component").value, document.getElementById("variable").value, op);
-      } else {
-        console.log('not ward');
-        map_layer = draw_map_borough(level, document.getElementById("component").value, op);
-      }
-
-
         map_layer.addTo(mymap);
-
-
   });
-
-
-document.addEventListener('DOMContentLoaded',function() {
-    document.querySelector('select[name="level"]').onchange=changeEventHandlerLevel;
-  },false);
 
 document.addEventListener('DOMContentLoaded',function() {
     document.querySelector('select[name="comp"]').onchange=changeEventHandler;
 },false);
 
 function changeEventHandler(event) {
-if (document.querySelector('#level').value == 'ward') {
 if (this.value == 'hwb') {
     document.getElementById('var_select').innerHTML = var_drop_hwb;
     //console.log(this.value);
 } else {
     document.getElementById('var_select').innerHTML = var_drop_perc;
-    //console.log(this.value);
-  }
-}
-}
-
-function changeEventHandlerLevel(event) {
-if (this.value == 'ward') {
-  document.addEventListener('DOMContentLoaded',function() {
-      document.querySelector('select[name="comp"]').onchange=changeEventHandler;
-  },false);
-
-  if (document.querySelector('#component').value == 'hwb') {
-      document.getElementById('var_select').innerHTML = var_drop_hwb;
-      //console.log(this.value);
-  } else {
-      document.getElementById('var_select').innerHTML = var_drop_perc;
-      //console.log(this.value);
-    }
-    //console.log(this.value);
-} else if (this.value == 'borough') {
-    //document.getElementById('var_select').style.visibility = "hidden";
-    document.getElementById('var_select').innerHTML = slider;
-    //console.log(this.value);
-} else {
-    //document.getElementById('var_select').style.visibility = "hidden";
-    document.getElementById('var_select').innerHTML = slider;
     //console.log(this.value);
   }
 }
