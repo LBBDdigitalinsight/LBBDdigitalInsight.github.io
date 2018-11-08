@@ -52,12 +52,12 @@ function draw_map(level, comp, vr, op){
                     '<tr> <td><strong>Health and Wellbeing Score: </strong></td>  <td>' + hw2018 + ' </td> </tr>' +
                   '</table>';
         } else {
-          var name = layer.feature.properties.WD11NM;
-          var ps2018 = layer.feature.properties.ps2018;
-          var syv2018 = layer.feature.properties.SYV2018;
-          var ksi2018 = layer.feature.properties.KSI2018;
-          var da2018 = layer.feature.properties.DA2018;
-          var crime2018 = layer.feature.properties.Crime2018;
+          var name = precise_round(layer.feature.properties.WD11NM,1);
+          var ps2018 = precise_round(layer.feature.properties.ps2018,1);
+          var syv2018 = precise_round(layer.feature.properties.SYV2018,1);
+          var ksi2018 = precise_round(layer.feature.properties.KSI2018,1);
+          var da2018 = precise_round(layer.feature.properties.DA2018,1);
+          var crime2018 = precise_round(layer.feature.properties.Crime2018,1);
 
           return '<h3>Ward: ' + name + '</h3>' +
                   '<table>' +
