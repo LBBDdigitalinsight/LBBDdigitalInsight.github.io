@@ -35,14 +35,14 @@ function draw_map(level, comp, vr, op){
     }
   }).bindPopup(function(layer) {
       if (comp == 'hwb') {
-          var name = layer.feature.properties.WD11NM;
-          var hw2018 = layer.feature.properties.hw2018;
-          var fle2018 = layer.feature.properties.FLE2018;
-          var mle2018 = layer.feature.properties.MLE2018;
-          var rcp2018 = layer.feature.properties.Rcp2018;
-          var yr62018 = layer.feature.properties.Yr62018;
+          var name = layer.feature.properties.NAME;
+          var hw2018 = precise_round(layer.feature.properties.hw2018,1);
+          var fle2018 = precise_round(layer.feature.properties.FLE2018,1);
+          var mle2018 = precise_round(layer.feature.properties.MLE2018,1);
+          var rcp2018 = precise_round(layer.feature.properties.Rcp2018,1);
+          var yr62018 = precise_round(layer.feature.properties.Yr62018,1);
 
-          return '<h3>Ward: ' + name + '</h3>' +
+          return '<h3>Area Name: ' + name + '</h3>' +
                   '<table>' +
                     '<tr> <th>Indicator</th><th>Score</th></tr>' +
                     '<tr> <td><strong>Male Life Expectancy:</strong></td>         <td>' + mle2018 + '</td> </tr>'+
