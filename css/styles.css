@@ -7,6 +7,33 @@ a {
   font-size: 14pt;
 }
 
+#tweets{
+    /*background-color: yellow;*/
+    background-image: url('../img/twitter.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+}
+
+#home{
+    /*background-color: yellow;*/
+    background-image: url('../img/home.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+}
+
+#git{
+    /*background-color: yellow;*/
+    background-image: url('../img/github.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+}
+
 a:visited {
   color: blue;
 }
@@ -38,7 +65,7 @@ h1 {
 
 .menu {
   height: 100px;
-  padding: 0.1% 10%;
+  padding: 0.1% 8%;
 }
 
 #menu {
@@ -147,10 +174,12 @@ tr:nth-child(even) {
   height: 50px;
   padding: 5px;
   margin-right: 50px;
-  background: 	#90EE90;
+  background: 	#13CCCC;
   text-align: center;
+  color: black;
+  font-weight: bold;
   line-height: 25px;
-
+  border-radius: 10px;
 }
 
 
@@ -187,6 +216,12 @@ tr:nth-child(even) {
 
 #menu {
   margin: 2%;
+}
+
+body {
+  background-image: url('../img/fork.png');
+  background-position: right top;
+  background-repeat: no-repeat;
 }
 
 #menu p{
