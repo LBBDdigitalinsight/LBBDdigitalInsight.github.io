@@ -16,6 +16,12 @@ a {
     background-position: center;
 }
 
+iframe {
+  display: block;
+  text-align: centre;
+  margin: 0 auto;
+}
+
 #home{
     /*background-color: yellow;*/
     background-image: url('../img/home.png');
