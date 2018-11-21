@@ -72,6 +72,7 @@ h1 {
 .menu {
   height: 100px;
   padding: 0.1% 8%;
+  width: 90%;
 }
 
 #menu {
@@ -176,7 +177,7 @@ tr:nth-child(even) {
 .menu_item {
   float: left;
   width: 10%;
-  width: 150px;
+  min-width: 75px;
   height: 50px;
   padding: 5px;
   margin-right: 50px;
@@ -220,9 +221,7 @@ tr:nth-child(even) {
     background-color: green;
 }
 
-#menu {
-  margin: 2%;
-}
+
 
 body {
   background-image: url('../img/fork.png');
